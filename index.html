@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-t" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="DocuSeal - Blockchain Document Verification"
+    />
+    <title>DocuSeal - Blockchain Document Verification</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              'brand-primary': '#007BFF',
+              'brand-secondary': '#6C757D',
+            },
+          },
+        },
+      }
+    </script>
+    <style>
+      /* Base styles for theme transition */
+      body {
+        --bg: #F0F2F5;
+        --text: #1F2937;
+        --bulb-off: #2D3748;
+        --bulb-on: #F7D574;
+        --cord: #4A5568;
+        --filament-off: #4A5568;
+        --filament-on: #F7D574;
+        transition: background-color 0.4s ease-in-out;
+        background-color: var(--bg);
+      }
+      .dark body {
+        --bg: #111827;
+        --text: #F9FAFB;
+        --bulb-off: #4B5563;
+        --bulb-on: #F7D574;
+        --cord: #D1D5DB;
+        --filament-off: #4A5568;
+        --filament-on: #F7D574;
+      }
+
+      /* Theme Bulb Styles */
+      .toggle-scene {
+        position: fixed;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 9999;
+        height: 150px;
+        width: 100px;
+        display: flex;
+        justify-content: center;
+        cursor: grab;
+      }
+      .toggle-scene:active {
+        cursor: grabbing;
+      }
+      .toggle-scene__cord {
+        stroke: var(--cord);
+        stroke-width: 2;
+        transition: stroke 0.4s ease;
+      }
+      .bulb {
+        transition: filter 0.4s ease;
+      }
+      .bulb__bulb {
+        fill: var(--bulb-off);
+        transition: fill 0.4s ease;
+      }
+      .bulb__cap {
+        fill: var(--cord);
+        transition: fill 0.4s ease;
+      }
+      .bulb__filament {
+        stroke: var(--filament-off);
+        stroke-width: 2.5;
+        transition: stroke 0.4s ease, filter 0.4s ease;
+      }
+      
+      /* Light mode styles */
+      html:not(.dark) .bulb__bulb {
+        fill: var(--bulb-on);
+      }
+      html:not(.dark) .bulb {
+        filter: drop-shadow(0 0 12px rgba(247, 213, 116, 0.8)) drop-shadow(0 0 30px rgba(247, 213, 116, 0.6));
+      }
+      html:not(.dark) .bulb__filament {
+        stroke: var(--filament-on);
+        filter: drop-shadow(0 0 5px rgba(255, 255, 255, 1));
+      }
+
+      /* Hide old theme toggle styles */
+      .theme-toggle {
+        display: none;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/Draggable.min.js"></script>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>

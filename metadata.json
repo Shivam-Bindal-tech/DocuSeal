@@ -1,0 +1,5 @@
+{
+  "name": "DocuSeal - Blockchain Document Verification",
+  "description": "A web application to verify the authenticity of uploaded documents using a simulated blockchain. Admins can register documents, generating a unique hash stored on-chain. Verifiers can upload a document to check if it's genuine or fake by comparing its hash against the blockchain records.",
+  "requestFramePermissions": []
+}
