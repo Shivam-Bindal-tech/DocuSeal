@@ -1,7 +1,7 @@
 
 // This service handles interactions with the backend API.
 
-const API_URL = 'http://localhost:3001/api/documents';
+const API_URL = '/api/documents';
 
 /**
  * Registers a document by uploading it to the backend.
@@ -92,6 +92,7 @@ export const deleteDocument = async (docHash: string) => {
  */
 export const generateDocHash = async (file: File): Promise<string> => {
     const fileBuffer = await file.arrayBuffer();
+    console.log(fileBuffer);
     const hashBuffer = await crypto.subtle.digest('SHA-256', fileBuffer);
     const hashArray = Array.from(new Uint8Array(hashBuffer));
     const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');

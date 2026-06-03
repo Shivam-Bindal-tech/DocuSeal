@@ -1,4 +1,4 @@
-const CHATBOT_API_URL = 'http://localhost:3001/api/chatbot';
+const CHATBOT_API_URL = '/api/chatbot';
 
 /**
  * Sends a message to the chatbot backend and gets a response.
