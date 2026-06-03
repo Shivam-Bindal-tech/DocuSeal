@@ -66,8 +66,22 @@ User: ${message}
 Assistant:
     `;
 
-    const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
-    const result = await model.generateContent(prompt);
+    let modelName = "gemini-3.5-flash";
+    let model = genAI.getGenerativeModel({ model: modelName });
+    let result;
+    try {
+      result = await model.generateContent(prompt);
+    } catch (error) {
+      console.warn(`Error with ${modelName}:`, error.message);
+      if (error.status === 503 || error.message.includes('503') || error.message.includes('Service Unavailable')) {
+        console.log("Falling back to gemini-3.1-flash-lite due to high demand...");
+        modelName = "gemini-3.1-flash-lite";
+        model = genAI.getGenerativeModel({ model: modelName });
+        result = await model.generateContent(prompt);
+      } else {
+        throw error;
+      }
+    }
     const response = await result.response;
     const text = response.text();
     res.status(200).json({ success: true, answer: text });
